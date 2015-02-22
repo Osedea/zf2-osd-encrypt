@@ -2,12 +2,23 @@
 
 namespace OsdCrypt\Crypt;
 
+use OsdCrypt\Options\ModuleOptions;
 use Zend\Crypt\BlockCipher;
 use Zend\Filter\File\Decrypt;
 use Zend\Filter\File\Encrypt;
 
 class Crypt
 {
+    protected static $options;
+
+    protected static $keyLocator;
+
+    public static function init(ModuleOptions $options)
+    {
+        self::$options = $options;
+        self::$keyLocator = $options->getCryptKeyLocator();
+    }
+
     /**
      *
      * Prepends $salt provided by CryptKeyLocator
@@ -18,7 +29,7 @@ class Crypt
      */
     public static function hash($value)
     {
-        $salt = CryptKeyLocator::getSalt();
+        $salt = call_user_func(array(self::$keyLocator, 'getSalt'));
 
         return hash('SHA256', $salt . $value);
     }
@@ -38,9 +49,11 @@ class Crypt
             return $decrypted;
         }
 
+        $key = call_user_func(array(self::$keyLocator, 'getKey'));
+
         $blockCipher = BlockCipher::factory('mcrypt', array('algo' => 'aes'));
 
-        $blockCipher->setKey(CryptKeyLocator::getKey());
+        $blockCipher->setKey($key);
 
         return $blockCipher->encrypt($decrypted);
     }
@@ -59,9 +72,11 @@ class Crypt
             return $encrypted;
         }
 
+        $key = call_user_func(array(self::$keyLocator, 'getKey'));
+
         $blockCipher = BlockCipher::factory('mcrypt', array('algo' => 'aes'));
 
-        $blockCipher->setKey(CryptKeyLocator::getKey());
+        $blockCipher->setKey($key);
 
         return $blockCipher->decrypt($encrypted);
     }
@@ -77,7 +92,9 @@ class Crypt
      */
     public static function encryptFile($input, $output)
     {
-        $options = array('key' => CryptKeyLocator::getKey());
+        $key = call_user_func(array(self::$keyLocator, 'getKey'));
+
+        $options = compact($key);
 
         $encrypt = new Encrypt($options);
 
@@ -97,7 +114,9 @@ class Crypt
      */
     public static function decryptFile($input, $output)
     {
-        $options = array('key' => CryptKeyLocator::getKey());
+        $key = call_user_func(array(self::$keyLocator, 'getKey'));
+
+        $options = compact($key);
 
         $decrypt = new Decrypt($options);
 

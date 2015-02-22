@@ -1,3 +1,7 @@
 <?php
 
-return array();
+return array(
+    'osdCrypt' => array(
+        'cryptKeyLocator' => 'OsdCrypt\Crypt\CryptKeyLocator',
+    ),
+);
