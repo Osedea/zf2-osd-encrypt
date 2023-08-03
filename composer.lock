@@ -1,22 +1,22 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "bac46cfa66b0af57c82f202d9f43f1ad",
+    "content-hash": "6e8f62c4afe2e6205ec510c0cfc05d8d",
     "packages": [
         {
             "name": "zendframework/zendframework",
             "version": "2.3.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zendframework/zf2.git",
+                "url": "https://github.com/zendframework/zendframework.git",
                 "reference": "886063aa5aee7476b77c380e25ecfacb2ee5ff4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/886063aa5aee7476b77c380e25ecfacb2ee5ff4c",
+                "url": "https://api.github.com/repos/zendframework/zendframework/zipball/886063aa5aee7476b77c380e25ecfacb2ee5ff4c",
                 "reference": "886063aa5aee7476b77c380e25ecfacb2ee5ff4c",
                 "shasum": ""
             },
@@ -122,28 +122,29 @@
                 "framework",
                 "zf2"
             ],
-            "time": "2015-02-18 19:48:16"
+            "abandoned": "laminas/laminas-mvc-skeleton",
+            "time": "2015-02-18T19:48:16+00:00"
         },
         {
             "name": "zendframework/zendxml",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/ZendXml.git",
-                "reference": "559b34f426d33a11c3db118e00ce14bb8dc64e5f"
+                "reference": "7b64507bc35d841c9c5802d67f6f87ef8e1a58c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendXml/zipball/559b34f426d33a11c3db118e00ce14bb8dc64e5f",
-                "reference": "559b34f426d33a11c3db118e00ce14bb8dc64e5f",
+                "url": "https://api.github.com/repos/zendframework/ZendXml/zipball/7b64507bc35d841c9c5802d67f6f87ef8e1a58c9",
+                "reference": "7b64507bc35d841c9c5802d67f6f87ef8e1a58c9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3 || ^7.0"
             },
             "require-dev": {
-                "fabpot/php-cs-fixer": "*@dev",
-                "phpunit/phpunit": "~3.7"
+                "phpunit/phpunit": "^3.7 || ^4.0",
+                "squizlabs/php_codesniffer": "^1.5"
             },
             "type": "library",
             "extra": {
@@ -153,7 +154,7 @@
             },
             "autoload": {
                 "psr-0": {
-                    "ZendXml": "library/"
+                    "ZendXml\\": "library/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -167,7 +168,8 @@
                 "xml",
                 "zf2"
             ],
-            "time": "2014-03-05 22:25:44"
+            "abandoned": "laminas/laminas-xml",
+            "time": "2016-02-04T21:02:08+00:00"
         }
     ],
     "packages-dev": [
@@ -176,12 +178,12 @@
             "version": "0.9.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/padraic/mockery.git",
+                "url": "https://github.com/mockery/mockery.git",
                 "reference": "686f85fa5b3b079cc0157d7cd3e9adb97f0b41e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/686f85fa5b3b079cc0157d7cd3e9adb97f0b41e1",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/686f85fa5b3b079cc0157d7cd3e9adb97f0b41e1",
                 "reference": "686f85fa5b3b079cc0157d7cd3e9adb97f0b41e1",
                 "shasum": ""
             },
@@ -235,7 +237,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2014-12-22 10:06:19"
+            "time": "2014-12-22T10:06:19+00:00"
         }
     ],
     "aliases": [],
@@ -246,5 +248,6 @@
     "platform": {
         "php": ">=5.3.3"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
